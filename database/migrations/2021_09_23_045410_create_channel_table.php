@@ -14,7 +14,7 @@ class CreateChannelTable extends Migration
     public function up()
     {
         Schema::create('channel', function (Blueprint $table) {
-            $table->id()->nullable(false);
+            $table->id()->nullable(false)->autoIncrement(true);
             $table->string('name')->nullable(false);
         });
     }

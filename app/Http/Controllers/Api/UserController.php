@@ -21,13 +21,22 @@ class UserController extends Controller
 
             return response()->json([
                 'data' => ['Time each channel was watched',  $channels]
-            ], 201);
+            ], 200);
         } catch (\Exception $e) {
-            return response()->json(['status' => 'error', 'message' => $e->getMessage()], 500);
+            return response()->json(['status' => 'error', 'message' => $e->getMessage()], 400);
         }
     }
 
     public function getUsers()
     {
+        try {
+            $users = $this->users->getOrderedUsers();
+
+            return response()->json([
+                'data' => ['Time each channel was watched',  $users]
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json(['status' => 'error', 'message' => $e->getMessage()], 400);
+        }
     }
 }

@@ -32,9 +32,15 @@ class UserRepository extends AbstractRepository implements UserRepositoryInterfa
 
     public function getOrderedUsers()
     {
-        // $users = DB::table('user')
-        //     ->select(DB::raw('minutes, name(channel), avg(rate) as rates'))
-        //     ->groupBy('recipe_id')
-        //     ->get();
+        try {
+            $users = $this->watchedTime::join('user', 'user.id', '=', 'watched_time.user_id')
+                ->select('user.name', DB::raw('minutes, date'))
+                ->orderBy('minutes', 'DESC')
+                ->get();
+
+            return $users;
+        } catch (\Exception $e) {
+            return response()->json(['status' => 'error', 'message' => $e->getMessage()], 400);
+        }
     }
 }

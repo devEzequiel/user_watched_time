@@ -33,7 +33,7 @@ class UserController extends Controller
             $users = $this->users->getOrderedUsers();
 
             return response()->json([
-                'data' => ['Time each channel was watched',  $users]
+                'data' => ['User watched time record',  $users]
             ], 200);
         } catch (\Exception $e) {
             return response()->json(['status' => 'error', 'message' => $e->getMessage()], 400);

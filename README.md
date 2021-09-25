@@ -43,6 +43,11 @@ Then install, migrate, seed, all that jazz:
 
 The API will be running on `localhost:8000`
 
+## Insomnia collection
+
+Import the `Insomnia.json` file inside `.insomnia` folder to your Insomnia.
+Or, use the REST client you prefer following the endpoints below.
+
 ## API Endpoints and Routes
 
 Laravel follows the Model View Controller (MVC) pattern I have created models associated with
